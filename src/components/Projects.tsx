@@ -111,9 +111,8 @@ export default function Projects() {
             <button
               key={f}
               onClick={() => setFilter(f)}
-              className={`font-mono text-xs px-4 py-1.5 border clip-corner-sm transition-all duration-200 ${
-                filter === f ? 'border-neon text-neon bg-neon/10' : 'border-border text-muted hover:text-white'
-              }`}
+              className={`font-mono text-xs px-4 py-1.5 border clip-corner-sm transition-all duration-200 ${filter === f ? 'border-neon text-neon bg-neon/10' : 'border-border text-muted hover:text-white'
+                }`}
             >
               ./{f}
             </button>
@@ -128,9 +127,8 @@ export default function Projects() {
           {filtered.map((p, i) => (
             <div
               key={p.id}
-              className={`reveal reveal-delay-${(i % 3) + 1} group relative border clip-corner bg-panel hover:bg-neon/5 transition-all duration-300 cursor-pointer ${
-                expanded === p.id ? 'border-neon/60' : 'border-border hover:border-neon/30'
-              }`}
+              className={`reveal reveal-delay-${(i % 3) + 1} group relative border clip-corner bg-panel hover:bg-neon/5 transition-all duration-300 cursor-pointer ${expanded === p.id ? 'border-neon/60' : 'border-border hover:border-neon/30'
+                }`}
               onClick={() => setExpanded(expanded === p.id ? null : p.id)}
             >
               {/* Top bar with project number */}

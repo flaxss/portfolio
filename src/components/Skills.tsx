@@ -130,11 +130,10 @@ export default function Skills() {
             <button
               key={cat.category}
               onClick={() => setActiveTab(i)}
-              className={`font-mono text-xs px-4 py-2 border clip-corner-sm transition-all duration-200 ${
-                activeTab === i
+              className={`font-mono text-xs px-4 py-2 border clip-corner-sm transition-all duration-200 ${activeTab === i
                   ? 'border-neon/60 text-neon bg-neon/10'
                   : 'border-border text-muted hover:border-neon/30 hover:text-white/70'
-              }`}
+                }`}
             >
               {cat.icon}{cat.category}
             </button>

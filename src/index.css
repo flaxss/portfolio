@@ -13,8 +13,8 @@
     background-color: #0d0d14;
     color: #e2e2f0;
     font-family: 'DM Sans', sans-serif;
-    overflow-x: hidden;
-    cursor: none;
+    /* overflow-x: hidden; */
+    /* cursor: none; */
   }
  
   /* Custom scrollbar */
