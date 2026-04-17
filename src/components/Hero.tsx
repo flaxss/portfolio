@@ -1,12 +1,3 @@
-import { useEffect, useRef, useState } from 'react'
-
-const commands = [
-  { cmd: '$ whoami', out: 'Jefferson Regencia — Backend Engineer' },
-  { cmd: '$ cat specialization.txt', out: 'Distributed Systems · APIs · Cloud Infra · DevOps' },
-  { cmd: '$ uptime', out: '5+ years of shipping reliable, scalable systems' },
-  { cmd: '$ echo $STATUS', out: 'Available for new opportunities ✓' },
-]
-
 export default function Hero() {
 
   return (
