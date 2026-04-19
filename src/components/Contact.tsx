@@ -56,7 +56,7 @@ export default function Contact() {
             </p>
 
             {/* What I'm looking for */}
-            <div className="border border-border clip-corner p-5 space-y-2">
+            {/* <div className="border border-border clip-corner p-5 space-y-2">
               <div className="font-mono text-xs text-muted tracking-widest uppercase mb-3">
                 <span className="text-neon/60">// </span>open to
               </div>
@@ -71,7 +71,7 @@ export default function Contact() {
                   <span className="font-mono text-xs text-white/65">{item}</span>
                 </div>
               ))}
-            </div>
+            </div> */}
           </div>
 
           {/* Right: contact links + form */}

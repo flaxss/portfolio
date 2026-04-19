@@ -5,7 +5,7 @@ const experiences = [
     role: 'Software Engineer',
     company: 'eTap - Electronic Transfer & Advance Processing Inc.',
     period: '2024 — Present',
-    location: 'Makati, PH (Hybrid)',
+    location: 'Makati, PH',
     stack: ['Node.js/Python/Django', 'MongoDB/Mysql', 'Docker', 'NGINX', 'ECS, Fargate'],
     achievements: [
       'Built and maintained backend APIs for a mobile application, enabling core features and service integrations',
@@ -106,8 +106,8 @@ export default function Experience() {
                     {exp.period}
                   </span>
                 </div>
-                <div className="flex flex-wrap gap-4 font-mono text-xs text-muted">
-                  <span>🏢 {exp.company}</span>
+                <div className="flex flex-wrap gap-2 font-mono text-xs text-muted">
+                  <span>{exp.company}</span>
                   <span>📍 {exp.location}</span>
                 </div>
               </div>
