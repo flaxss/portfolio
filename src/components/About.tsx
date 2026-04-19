@@ -2,24 +2,24 @@ import { useEffect, useRef } from 'react'
 
 const traits = [
   {
-    icon: '🏗️',
-    title: 'Systems Thinker',
-    desc: 'I decompose complex problems into elegant, maintainable architectures. Every service I build is designed with failure modes, scalability, and observability in mind from day one.',
+    icon: '🛠️',
+    title: 'Backend Builder',
+    desc: 'I build backend systems for real business use cases — from APIs to internal tools like inventory, dispatch, and HR systems that support daily operations.',
   },
   {
-    icon: '🤝',
-    title: 'Cross-Team Collaborator',
-    desc: 'I bridge the gap between engineering, product, and operations. I write documentation people actually read and mentored 6 junior engineers into productive contributors.',
+    icon: '🚀',
+    title: 'Deployment-Focused Engineer',
+    desc: 'I don’t stop at development — I deploy and run systems using Docker, NGINX, and AWS ECS/Fargate to ensure they work in real production environments.',
   },
   {
-    icon: '🔬',
-    title: 'Data-Driven Debugger',
-    desc: "When production breaks at 3am, I'm methodical — not panicked. I trace root causes through logs, metrics, and distributed traces before making a single code change.",
+    icon: '🔐',
+    title: 'Security-Aware Developer',
+    desc: 'I implement authentication and protection layers such as OAuth-based systems, TOTP verification, and Firebase App Check to secure backend services.',
   },
   {
-    icon: '📦',
-    title: 'Async Communicator',
-    desc: 'I default to clear written communication — RFCs, ADRs, incident post-mortems, and detailed PR descriptions. Remote-first teams run on written clarity.',
+    icon: '🔧',
+    title: 'Practical Problem Solver',
+    desc: 'I design and build systems based on real operational needs — like warehouse tracking, vehicle dispatching, and HR leave management systems.',
   },
 ]
 
@@ -56,7 +56,7 @@ export default function About() {
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="relative">
                     <div className="w-24 h-24 rounded-full bg-neon/10 border-2 border-neon/30 flex items-center justify-center">
-                      <span className="font-mono text-4xl font-bold text-neon neon-glow">AR</span>
+                      <span className="font-mono text-4xl font-bold text-neon neon-glow">JR</span>
                     </div>
                     <div className="absolute -inset-4 border border-neon/10 rounded-full animate-[spin_20s_linear_infinite]" />
                     <div className="absolute -inset-8 border border-neon/5 rounded-full animate-[spin_30s_linear_reverse_infinite]" />
@@ -73,10 +73,9 @@ export default function About() {
 
             <div className="reveal reveal-delay-1 space-y-2">
               {[
-                ['location', 'Manila, Philippines'],
+                ['location', 'Cavite, Philippines'],
                 ['timezone', 'UTC+8 (flexible)'],
                 ['languages', 'English, Filipino'],
-                ['availability', 'Open to offers'],
               ].map(([k, v]) => (
                 <div key={k} className="flex gap-3 font-mono text-xs">
                   <span className="text-neon/60 w-24 flex-shrink-0">{k}:</span>
@@ -90,20 +89,19 @@ export default function About() {
           <div className="lg:col-span-3 space-y-8">
             <div className="reveal">
               <h2 className="font-display text-3xl lg:text-4xl text-white font-bold mb-4">
-                I build things that{' '}
-                <span className="text-neon neon-glow">don't break</span>
+                I build systems that{' '}
+                <span className="text-neon neon-glow">work reliably</span>
                 <br />
-                at scale.
+                in real-world environments.
               </h2>
               <p className="text-white/60 leading-relaxed font-body">
-                I'm a backend engineer with 5+ years of experience designing and shipping high-throughput distributed
-                systems. My stack spans Go, TypeScript/Node.js, PostgreSQL, Redis, Kafka, and cloud-native
-                infrastructure on AWS and GCP.
+                I develop backend systems for web and mobile applications, with hands-on experience in deployment,
+                containerization, and server configuration. I work with tools like Docker, NGINX, and cloud services
+                to run applications in production.
               </p>
               <p className="text-white/60 leading-relaxed font-body mt-4">
-                I care deeply about code that future engineers can reason about — clean interfaces, observable systems,
-                and documentation that doesn't rot. Outside of code I contribute to OSS, write technical deep-dives,
-                and mentor junior devs.
+                While my focus is backend development, I also have experience with React for building frontend
+                interfaces, allowing me to support full feature delivery when needed.
               </p>
             </div>
 

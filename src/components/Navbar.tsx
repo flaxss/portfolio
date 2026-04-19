@@ -19,6 +19,7 @@ export default function Navbar() {
       const sections = navItems.map(i => i.href.slice(1))
       for (const id of sections.reverse()) {
         const el = document.getElementById(id)
+        console.log(el)
         if (el && window.scrollY >= el.offsetTop - 120) {
           setActive(id)
           break
@@ -39,7 +40,7 @@ export default function Navbar() {
         {/* Logo */}
         <a href="#hero" className="font-mono text-sm text-neon tracking-widest hover:neon-glow transition-all group">
           <span className="text-muted group-hover:text-neon transition-colors">&gt;_</span>{' '}
-          <span className="neon-glow">AR</span>
+          <span className="neon-glow">JR</span>
           <span className="animate-blink text-neon">█</span>
         </a>
 
@@ -66,12 +67,12 @@ export default function Navbar() {
         </ul>
 
         {/* CTA */}
-        <a
+        {/* <a
           href="#contact"
           className="font-mono text-xs border border-neon/40 text-neon px-4 py-2 clip-corner-sm hover:bg-neon/10 hover:border-neon transition-all duration-200 neon-box-glow"
         >
           hire me
-        </a>
+        </a> */}
       </div>
     </nav>
   )

@@ -37,8 +37,7 @@ export default function Hero() {
           </div>
 
           <p className="font-body text-base text-white/60 leading-relaxed max-w-md mb-10">
-            I architect and build the invisible machinery that powers products —
-            from high-throughput APIs to event-driven pipelines and cloud-native infrastructure.
+            I build backend systems that power web and mobile applications — from development to deployment.
           </p>
 
           {/* CTA row */}
@@ -61,9 +60,9 @@ export default function Hero() {
           {/* Stats row */}
           <div className="mt-12 grid grid-cols-3 gap-6 border-t border-border pt-8">
             {[
-              { val: '5+', label: 'years exp' },
-              { val: '40+', label: 'projects shipped' },
-              { val: '99.9%', label: 'uptime avg' },
+              { val: '3+', label: 'years backend experience' },
+              { val: '6+', label: 'production systems built' },
+              { val: 'infra-ready', label: 'docker • nginx • ecs' },
             ].map(({ val, label }) => (
               <div key={label}>
                 <div className="font-mono text-2xl font-bold text-neon neon-glow">{val}</div>
@@ -73,13 +72,6 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Right: terminal */}
-      </div>
-
-      {/* Scroll cue */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
-        <span className="font-mono text-xs text-muted tracking-widest">scroll</span>
-        <div className="w-px h-8 bg-gradient-to-b from-neon/40 to-transparent" />
       </div>
     </section>
   )

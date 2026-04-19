@@ -2,43 +2,40 @@ import { useEffect, useRef, useState } from 'react'
 
 const experiences = [
   {
-    role: 'Senior Backend Engineer',
-    company: 'Fintech Startup (Series B)',
-    period: '2022 — Present',
-    location: 'Manila, PH (Remote)',
-    stack: ['Go', 'PostgreSQL', 'Kafka', 'K8s', 'AWS'],
+    role: 'Software Engineer',
+    company: 'eTap - Electronic Transfer & Advance Processing Inc.',
+    period: '2024 — Present',
+    location: 'Makati, PH (Hybrid)',
+    stack: ['Node.js/Python/Django', 'MongoDB/Mysql', 'Docker', 'NGINX', 'ECS, Fargate'],
     achievements: [
-      'Led migration of monolith to 14 microservices, reducing deployment lead time from 3 weeks to 2 hours',
-      'Designed and built a real-time transaction processing pipeline processing ₱2B+/month with <100ms p95 latency',
-      'Reduced infrastructure costs by 38% via right-sizing, Reserved Instances, and spot fleet automation',
-      'Mentored 4 junior engineers; introduced ADR culture and internal RFC process adopted company-wide',
-      'Owned incident response for Severity-1 issues, reducing MTTD by 60% via improved observability',
+      'Built and maintained backend APIs for a mobile application, enabling core features and service integrations',
+      'Helped design backend architecture, organizing API and microservice structure for scalability',
+      'Implemented OAuth-based authentication across services to strengthen system security',
+      'Added user-based TOTP as an additional layer of authentication',
+      'Integrated Firebase App Check to protect backend endpoints from unauthorized requests',
     ],
   },
   {
-    role: 'Backend Engineer',
-    company: 'SaaS Product Company',
-    period: '2020 — 2022',
-    location: 'Cebu, PH',
-    stack: ['Node.js', 'TypeScript', 'Redis', 'Docker', 'GCP'],
+    role: 'Web Developer',
+    company: 'LARC - Laguna Aquatech Resource Corporation',
+    period: '2023 — 2024',
+    location: 'Laguna, PH',
+    stack: ['PHP/Code Igniter', 'HTML', 'Javascript', 'Ajax', 'Bootstrap'],
     achievements: [
-      'Built multi-tenant REST API serving 200k+ daily active users with 99.95% uptime SLA',
-      'Implemented caching strategy with Redis that cut database load by 70% on peak traffic',
-      'Designed webhook delivery system with retry semantics, dead-letter queues, and audit trails',
-      'Shipped zero-downtime blue-green deployments via Cloud Run and GCP Load Balancers',
+      'Developed and maintained internal web systems for company operations as a solo developer',
+      'Built a warehouse management system to track inventory and generate operational reports',
+      'Developed a vehicle dispatch system for scheduling, tracking usage, and monitoring trip duration and distance',
+      'Implemented a reservation feature for vehicle allocation based on date and duration',
+      'Built a leave filing system with automated email notifications for HR',
     ],
   },
+]
+
+const educations = [
   {
-    role: 'Junior Software Engineer',
-    company: 'Digital Agency',
-    period: '2019 — 2020',
-    location: 'Manila, PH',
-    stack: ['PHP', 'Laravel', 'MySQL', 'Vue.js'],
-    achievements: [
-      'Delivered backend APIs for 6 client projects across e-commerce, healthcare, and logistics verticals',
-      'Introduced unit testing (PHPUnit) to a previously untested codebase, reaching 72% coverage',
-      'Automated report generation workflows, saving ~20 hours of manual work per week for the ops team',
-    ],
+    course: 'B.S. Information Technology',
+    university: 'Cavite State University',
+    period: '',
   },
 ]
 
@@ -75,11 +72,10 @@ export default function Experience() {
               <button
                 key={i}
                 onClick={() => setActiveExp(i)}
-                className={`w-full text-left border clip-corner p-4 transition-all duration-200 group ${
-                  activeExp === i
-                    ? 'border-neon/50 bg-neon/5 text-neon'
-                    : 'border-border text-muted hover:border-neon/20 hover:text-white'
-                }`}
+                className={`w-full text-left border clip-corner p-4 transition-all duration-200 group ${activeExp === i
+                  ? 'border-neon/50 bg-neon/5 text-neon'
+                  : 'border-border text-muted hover:border-neon/20 hover:text-white'
+                  }`}
               >
                 <div className={`font-mono text-xs font-semibold ${activeExp === i ? 'text-neon' : 'text-white/70'}`}>
                   {e.company}
@@ -89,12 +85,14 @@ export default function Experience() {
             ))}
 
             {/* Education */}
-            <div className="border border-border clip-corner p-4 mt-6">
-              <div className="font-mono text-xs text-muted tracking-widest uppercase mb-3">education</div>
-              <div className="font-mono text-xs text-white/70 font-semibold">B.S. Computer Science</div>
-              <div className="font-mono text-xs text-muted">University of Santo Tomas</div>
-              <div className="font-mono text-xs text-muted">2015 — 2019</div>
-            </div>
+            {educations.map((e) => (
+              <div className="border border-border clip-corner p-4 mt-6">
+                <div className="font-mono text-xs text-muted tracking-widest uppercase mb-3">education</div>
+                <div className="font-mono text-xs text-white/70 font-semibold">{e.course}</div>
+                <div className="font-mono text-xs text-muted">{e.university}</div>
+                <div className="font-mono text-xs text-muted">{e.period}</div>
+              </div>
+            ))}
           </div>
 
           {/* Right: details */}
@@ -139,7 +137,7 @@ export default function Experience() {
         </div>
 
         {/* Certifications row */}
-        <div className="reveal mt-14">
+        {/* <div className="reveal mt-14">
           <h3 className="font-mono text-xs text-muted tracking-widest uppercase mb-5">
             <span className="text-neon/60">// </span>certifications & continuous learning
           </h3>
@@ -159,7 +157,8 @@ export default function Experience() {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
+        
       </div>
     </section>
   )

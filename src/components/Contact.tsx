@@ -19,11 +19,14 @@ export default function Contact() {
     setTimeout(() => setCopied(''), 2000)
   }
 
+  const email = "jeff_molato@yahoo.com"
+  const linked_in = "https://www.linkedin.com/in/jefferson-regencia-078345288"
+  const github = "https://github.com/flaxss"
+
   const contacts = [
-    { key: 'email', icon: '✉', label: 'Email', value: 'alex@example.com', href: 'mailto:alex@example.com' },
-    { key: 'linkedin', icon: '🔗', label: 'LinkedIn', value: '/in/alexrivera-dev', href: '#' },
-    { key: 'github', icon: '⌥', label: 'GitHub', value: 'github.com/alexrivera', href: '#' },
-    { key: 'twitter', icon: '✦', label: 'Twitter / X', value: '@alexrivera_eng', href: '#' },
+    { key: 'email', icon: '✉', label: 'Email', value: email, href: `mailto:${email}` },
+    { key: 'linkedin', icon: '🔗', label: 'LinkedIn', value: linked_in, href: linked_in },
+    { key: 'github', icon: '⌥', label: 'GitHub', value: github, href: github },
   ]
 
   return (
@@ -44,10 +47,12 @@ export default function Contact() {
               <span className="text-neon neon-glow">reliable</span>{' '}
               together.
             </h2>
+
             <p className="font-body text-white/60 leading-relaxed">
-              I'm currently open to senior backend or staff engineer roles, especially in fintech,
-              developer tooling, or infrastructure. I'm also available for technical consulting
-              on distributed systems and API design.
+              I'm a backend-focused developer with experience building and maintaining
+              production systems, internal tools, and API-driven applications. I enjoy
+              working on system design, backend architecture, and improving reliability
+              in real-world applications.
             </p>
 
             {/* What I'm looking for */}
@@ -56,10 +61,10 @@ export default function Contact() {
                 <span className="text-neon/60">// </span>open to
               </div>
               {[
-                'Full-time backend / platform engineering roles',
-                'Remote-first or hybrid teams (UTC+8 ±3h)',
-                'Technical consulting (systems design, API audits)',
-                'Conference talks & technical writing',
+                'Backend / Platform Engineering roles',
+                'System design & API development work',
+                'Internal tools / infrastructure projects',
+                'Remote or hybrid (UTC+8 time zone)'
               ].map(item => (
                 <div key={item} className="flex gap-3 items-start">
                   <span className="text-neon mt-0.5 flex-shrink-0">▸</span>
@@ -77,7 +82,7 @@ export default function Contact() {
                 key={c.key}
                 className="group flex items-center justify-between border border-border clip-corner p-4 hover:border-neon/40 hover:bg-neon/5 transition-all duration-200"
               >
-                <a href={c.href} className="flex items-center gap-4">
+                <a href={c.href} target='_blank' className="flex items-center gap-4">
                   <span className="font-mono text-lg">{c.icon}</span>
                   <div>
                     <div className="font-mono text-xs text-muted">{c.label}</div>
@@ -98,10 +103,14 @@ export default function Contact() {
             {/* Quick message hint */}
             <div className="border border-dashed border-border clip-corner p-5 text-center">
               <p className="font-mono text-xs text-muted">
-                Prefer a direct channel? DM me on{' '}
-                <a href="#" className="text-neon hover:neon-glow transition-all">LinkedIn</a>
+                Available for backend engineering opportunities or system design work. DM me on{' '}
+                <a href={linked_in} target="_blank" rel="noopener noreferrer" className="text-neon">
+                  LinkedIn
+                </a>
                 {' '}or shoot me an{' '}
-                <a href="mailto:alex@example.com" className="text-neon hover:neon-glow transition-all">email</a>.
+                <a href={`mailto:${email}`} className="text-neon">
+                  email
+                </a>
                 <br />
                 I respond within 24 hours on business days.
               </p>
@@ -110,23 +119,9 @@ export default function Contact() {
         </div>
 
         {/* Footer */}
-        <div className="reveal mt-24 pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="mt-24 pt-8 border-t border-border">
           <span className="font-mono text-xs text-muted">
-            <span className="text-neon/60">alex@portfolio</span>:~$ built with React + Tailwind + TypeScript
-          </span>
-          <div className="flex gap-6">
-            {['github', 'linkedin', 'twitter'].map(s => (
-              <a
-                key={s}
-                href="#"
-                className="font-mono text-xs text-muted hover:text-neon transition-colors tracking-widest"
-              >
-                ./{s}
-              </a>
-            ))}
-          </div>
-          <span className="font-mono text-xs text-muted">
-            © 2026 Alex Rivera
+            © 2026 Jefferson Regencia
           </span>
         </div>
       </div>
