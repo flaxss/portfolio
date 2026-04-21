@@ -49,29 +49,12 @@ export default function Contact() {
             </h2>
 
             <p className="font-body text-white/60 leading-relaxed">
-              I'm a backend-focused developer with experience building and maintaining
-              production systems, internal tools, and API-driven applications. I enjoy
-              working on system design, backend architecture, and improving reliability
-              in real-world applications.
+              I'm a backend-focused developer building APIs, internal tools, and application
+              backends for real-world use. I work with containerized environments and contribute
+              to deployment workflows using Docker, NGINX, and AWS Fargate within existing
+              infrastructure setups, collaborating with SRE teams on service integration at the
+              network level.
             </p>
-
-            {/* What I'm looking for */}
-            {/* <div className="border border-border clip-corner p-5 space-y-2">
-              <div className="font-mono text-xs text-muted tracking-widest uppercase mb-3">
-                <span className="text-neon/60">// </span>open to
-              </div>
-              {[
-                'Backend / Platform Engineering roles',
-                'System design & API development work',
-                'Internal tools / infrastructure projects',
-                'Remote or hybrid (UTC+8 time zone)'
-              ].map(item => (
-                <div key={item} className="flex gap-3 items-start">
-                  <span className="text-neon mt-0.5 flex-shrink-0">▸</span>
-                  <span className="font-mono text-xs text-white/65">{item}</span>
-                </div>
-              ))}
-            </div> */}
           </div>
 
           {/* Right: contact links + form */}

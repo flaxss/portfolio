@@ -125,27 +125,37 @@ export default function Projects() {
         )}
 
         {/* Metrics */}
-        <div className="flex flex-wrap gap-2 mb-4">
-          {p.metrics.map((m: string) => (
-            <span
-              key={m}
-              className="font-mono text-xs text-neon/70 bg-neon/5 border border-neon/20 px-2 py-0.5"
-            >
-              {m}
-            </span>
-          ))}
+        <div className="mb-3">
+          <p className="font-mono text-[10px] text-white mb-2 uppercase">
+            Features
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {p.metrics.map((m: string) => (
+              <span
+                key={m}
+                className="font-mono text-xs text-neon/80 bg-neon/10 border border-neon/30 px-2 py-0.5"
+              >
+                {m}
+              </span>
+            ))}
+          </div>
         </div>
 
         {/* Tags */}
-        <div className="flex flex-wrap gap-2">
-          {p.tags.map((t: string) => (
-            <span
-              key={t}
-              className="font-mono text-xs text-muted bg-surface border border-border px-2 py-0.5"
-            >
-              {t}
-            </span>
-          ))}
+        <div>
+          <p className="font-mono text-[10px] text-white mb-2 uppercase">
+            Tech
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {p.tags.map((t: string) => (
+              <span
+                key={t}
+                className="font-mono text-[11px] text-muted bg-surface border border-border px-2 py-0.5"
+              >
+                {t}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </div>

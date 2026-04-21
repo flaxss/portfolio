@@ -13,14 +13,30 @@ export default function Navbar() {
   const [active, setActive] = useState('')
 
   useEffect(() => {
+    const hash = window.location.hash
+    if (!hash) return
+
+    const id = hash.replace('#', '')
+    const el = document.getElementById(id)
+
+    if (el) {
+      // wait for layout
+      requestAnimationFrame(() => {
+        el.scrollIntoView({ behavior: 'auto', block: 'start' })
+      })
+    }
+  }, [])
+
+  useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 40)
 
       const sections = navItems.map(i => i.href.slice(1))
       for (const id of sections.reverse()) {
         const el = document.getElementById(id)
-        console.log(el)
-        if (el && window.scrollY >= el.offsetTop - 120) {
+
+        const rect = el.getBoundingClientRect()
+        if (rect.top <= 160) {
           setActive(id)
           break
         }
@@ -32,9 +48,8 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? 'glass border-b border-border py-3' : 'py-6'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'glass border-b border-border py-3' : 'py-6'
+        }`}
     >
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
@@ -50,11 +65,10 @@ export default function Navbar() {
             <li key={item.label}>
               <a
                 href={item.href}
-                className={`font-mono text-xs tracking-widest uppercase transition-all duration-200 relative group ${
-                  active === item.href.slice(1)
-                    ? 'text-neon neon-glow'
-                    : 'text-muted hover:text-neon'
-                }`}
+                className={`font-mono text-xs tracking-widest uppercase transition-all duration-200 relative group ${active === item.href.slice(1)
+                  ? 'text-neon neon-glow'
+                  : 'text-muted hover:text-neon'
+                  }`}
               >
                 <span className="text-neon/40 mr-1 group-hover:text-neon/80 transition-colors">//</span>
                 {item.label}

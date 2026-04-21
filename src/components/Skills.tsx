@@ -9,7 +9,7 @@ const primarySkills = [
 ]
 
 const secondarySkills = {
-  Development: ['Node.js', 'Python/Django', 'React', 'REST API Design'],
+  Development: ['Node.js/Express.js', 'PHP/Code Igniter', 'Python/Django', 'React', 'REST API Design'],
   Database: ['MySQL', 'MongoDB'],
   Infrastructure: ['Docker Compose', 'AWS Basics', 'Environment Configs'],
 }

@@ -2,25 +2,27 @@ import { useEffect, useRef } from 'react'
 
 const traits = [
   {
-    icon: '🛠️',
-    title: 'Backend Builder',
-    desc: 'I build backend systems for real business use cases — from APIs to internal tools like inventory, dispatch, and HR systems that support daily operations.',
+    title: 'Backend Developer',
+    desc: 'I build backend systems for business applications — developing APIs and internal tools that support workflows such as inventory, dispatch, and HR operations.',
   },
   {
-    icon: '🚀',
-    title: 'Deployment-Focused Engineer',
-    desc: 'I don’t stop at development — I deploy and run systems using Docker, NGINX, and AWS ECS/Fargate to ensure they work in real production environments.',
+    title: 'Deployment Experience',
+    desc: 'I containerize and deploy applications using Docker and work with AWS ECS/Fargate environments, collaborating with SRE teams for infrastructure setup.',
   },
   {
-    icon: '🔐',
-    title: 'Security-Aware Developer',
-    desc: 'I implement authentication and protection layers such as OAuth-based systems, TOTP verification, and Firebase App Check to secure backend services.',
+    title: 'Server & API Integration',
+    desc: 'I configure NGINX and integrate backend services with authentication systems, external APIs, and cloud-based services.',
   },
   {
-    icon: '🔧',
-    title: 'Practical Problem Solver',
-    desc: 'I design and build systems based on real operational needs — like warehouse tracking, vehicle dispatching, and HR leave management systems.',
+    title: 'Practical System Builder',
+    desc: 'I focus on building solutions based on real operational needs, translating business requirements into working backend systems.',
   },
+]
+
+const extra = [
+  ['location', 'Cavite, Philippines'],
+  ['timezone', 'UTC+8 (flexible)'],
+  ['languages', 'English, Filipino'],
 ]
 
 export default function About() {
@@ -65,18 +67,11 @@ export default function About() {
                 {/* Corner decorations */}
                 <div className="absolute top-2 left-2 w-6 h-6 border-t border-l border-neon/40" />
                 <div className="absolute bottom-2 right-2 w-6 h-6 border-b border-r border-neon/40" />
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-panel via-panel/60 to-transparent p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                  <p className="font-mono text-xs text-neon">online and caffeinated ☕</p>
-                </div>
               </div>
             </div>
 
             <div className="reveal reveal-delay-1 space-y-2">
-              {[
-                ['location', 'Cavite, Philippines'],
-                ['timezone', 'UTC+8 (flexible)'],
-                ['languages', 'English, Filipino'],
-              ].map(([k, v]) => (
+              {extra.map(([k, v]) => (
                 <div key={k} className="flex gap-3 font-mono text-xs">
                   <span className="text-neon/60 w-24 flex-shrink-0">{k}:</span>
                   <span className="text-white/70">{v}</span>
@@ -89,19 +84,17 @@ export default function About() {
           <div className="lg:col-span-3 space-y-8">
             <div className="reveal">
               <h2 className="font-display text-3xl lg:text-4xl text-white font-bold mb-4">
-                I build systems that{' '}
-                <span className="text-neon neon-glow">work reliably</span>
-                <br />
-                in real-world environments.
+                I build backend systems used in <span className="text-neon neon-glow">real applications</span> — from development to deployment.
               </h2>
+
               <p className="text-white/60 leading-relaxed font-body">
-                I develop backend systems for web and mobile applications, with hands-on experience in deployment,
-                containerization, and server configuration. I work with tools like Docker, NGINX, and cloud services
-                to run applications in production.
+                I develop backend systems for web and mobile applications, with experience in
+                containerizing and deploying services using tools like Docker, NGINX, and AWS Fargate.
               </p>
+
               <p className="text-white/60 leading-relaxed font-body mt-4">
-                While my focus is backend development, I also have experience with React for building frontend
-                interfaces, allowing me to support full feature delivery when needed.
+                My focus is backend development, but I also work with React when needed to support
+                complete feature delivery.
               </p>
             </div>
 
@@ -112,7 +105,7 @@ export default function About() {
                   key={t.title}
                   className={`reveal reveal-delay-${i + 1} group border border-border hover:border-neon/30 bg-panel clip-corner p-5 transition-all duration-300 hover:bg-neon/5`}
                 >
-                  <div className="text-2xl mb-3">{t.icon}</div>
+                  {/* <div className="text-2xl mb-3">{t.icon}</div> */}
                   <h3 className="font-mono text-sm font-semibold text-white mb-2 group-hover:text-neon transition-colors">
                     {t.title}
                   </h3>

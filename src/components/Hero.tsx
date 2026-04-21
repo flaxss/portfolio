@@ -1,75 +1,90 @@
+import { useEffect, useRef } from 'react'
+
+const stats = [
+  { val: '3+', label: 'years experience' },
+  { val: '6+', label: 'systems built' },
+  { val: 'deployment', label: 'docker • ci/cd • aws' }
+]
+
 export default function Hero() {
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) =>
+        entries.forEach((e) =>
+          e.target.classList.toggle('visible', e.isIntersecting)
+        ),
+      { threshold: 0.1 }
+    )
+
+    ref.current
+      ?.querySelectorAll('.reveal')
+      .forEach((el) => observer.observe(el))
+
+    return () => observer.disconnect()
+  }, [])
 
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center grid-bg overflow-hidden"
+      ref={ref}
+      className="relative min-h-screen flex items-center overflow-hidden"
     >
-      {/* Ambient glow blobs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-neon/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-amber/5 rounded-full blur-3xl pointer-events-none" />
+      {/* Background */}
+      <div className="absolute inset-0 grid-bg opacity-40" />
 
-      {/* Scan line animation */}
-      <div
-        className="absolute inset-0 pointer-events-none z-0"
-        style={{
-          background: 'linear-gradient(to bottom, transparent 0%, rgba(0,255,136,0.015) 50%, transparent 100%)',
-          backgroundSize: '100% 200px',
-          animation: 'scan 12s linear infinite',
-        }}
-      />
+      {/* Glow accents */}
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-neon/10 blur-3xl rounded-full" />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6 w-full grid lg:grid-cols-2 gap-16 items-center">
-        {/* Left: identity */}
-        <div>
+      <div className="relative z-10 max-w-4xl mx-auto px-6 w-full text-center">
 
-          <h1 className="font-display text-5xl lg:text-7xl font-bold leading-none mb-2 tracking-tight">
-            <span className="text-white">Jefferson</span>
-            <br />
-            <span className="text-neon neon-glow">Regencia</span>
-          </h1>
+        {/* Label */}
+        <p className="reveal font-mono text-xs text-neon/70 mb-6">
+          // software engineer
+        </p>
 
-          <div className="font-mono text-sm text-muted mt-4 mb-8 flex items-center gap-3">
-            <span className="text-neon">▸</span>
-            <span>Backend Software Engineer</span>
-            <span className="text-border">|</span>
-            <span>Philippines 🇵🇭</span>
-          </div>
+        {/* Title */}
+        <h1 className="reveal font-display text-5xl lg:text-7xl font-bold leading-[1.05] tracking-tight mb-6">
+          <span className="text-white">Jefferson</span>{' '}
+          <span className="text-neon neon-glow">Regencia</span>
+        </h1>
 
-          <p className="font-body text-base text-white/60 leading-relaxed max-w-md mb-10">
-            I build backend systems that power web and mobile applications — from development to deployment.
-          </p>
+        {/* Subtitle */}
+        <p className="reveal text-white/60 text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
+          I design and build scalable backend systems for web and mobile applications —
+          from architecture to production deployment.
+        </p>
 
-          {/* CTA row */}
-          <div className="flex flex-wrap gap-4">
-            <a
-              href="#projects"
-              className="font-mono text-sm bg-neon text-surface px-6 py-3 clip-corner font-semibold hover:shadow-[0_0_24px_#00ff8860] transition-all duration-300 group"
-            >
-              view_projects()
-              <span className="opacity-0 group-hover:opacity-100 ml-1 transition-opacity">→</span>
-            </a>
-            <a
-              href="#contact"
-              className="font-mono text-sm border border-muted text-white/70 px-6 py-3 clip-corner hover:border-neon/60 hover:text-neon transition-all duration-300"
-            >
-              get_in_touch()
-            </a>
-          </div>
+        {/* CTA */}
+        <div className="reveal flex justify-center gap-4 mb-12">
+          <a
+            href="#projects"
+            className="font-mono text-sm bg-neon text-black px-6 py-3 clip-corner font-semibold hover:shadow-[0_0_24px_#00ff8860] transition"
+          >
+            view_projects()
+          </a>
 
-          {/* Stats row */}
-          <div className="mt-12 grid grid-cols-3 gap-6 border-t border-border pt-8">
-            {[
-              { val: '3+', label: 'years backend experience' },
-              { val: '6+', label: 'production systems built' },
-              { val: 'infra-ready', label: 'docker • nginx • ecs' },
-            ].map(({ val, label }) => (
-              <div key={label}>
-                <div className="font-mono text-2xl font-bold text-neon neon-glow">{val}</div>
-                <div className="font-mono text-xs text-muted mt-1 tracking-wider">{label}</div>
+          <a
+            href="#contact"
+            className="font-mono text-sm border border-border px-6 py-3 clip-corner text-white/70 hover:border-neon hover:text-neon transition"
+          >
+            get_in_touch()
+          </a>
+        </div>
+
+        {/* Stats */}
+        <div className="reveal grid grid-cols-3 gap-6 border-t border-border pt-6 max-w-lg mx-auto">
+          {stats.map(({ val, label }) => (
+            <div key={label}>
+              <div className="text-neon font-mono text-xl font-bold">
+                {val}
               </div>
-            ))}
-          </div>
+              <div className="text-xs text-muted font-mono">
+                {label}
+              </div>
+            </div>
+          ))}
         </div>
 
       </div>
