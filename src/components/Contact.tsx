@@ -39,7 +39,7 @@ export default function Contact() {
           <div className="flex-1 h-px bg-border" />
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           {/* Left: message */}
           <div className="reveal space-y-6">
             <h2 className="font-display text-3xl lg:text-4xl text-white font-bold">
@@ -61,22 +61,21 @@ export default function Contact() {
           <div className="reveal reveal-delay-2 space-y-4">
             {/* Contact links */}
             {contacts.map(c => (
-              <div
-                key={c.key}
-                className="group flex items-center justify-between border border-border clip-corner p-4 hover:border-neon/40 hover:bg-neon/5 transition-all duration-200"
-              >
-                <a href={c.href} target='_blank' className="flex items-center gap-4">
-                  <span className="font-mono text-lg">{c.icon}</span>
-                  <div>
+              <div key={c.key} className="group flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border border-border clip-corner p-4 hover:border-neon/40 hover:bg-neon/5 transition-all duration-200">
+                <a href={c.href} target="_blank" className="flex items-start sm:items-center gap-4 min-w-0">
+                  <span className="font-mono text-lg shrink-0">{c.icon}</span>
+
+                  <div className="min-w-0">
                     <div className="font-mono text-xs text-muted">{c.label}</div>
-                    <div className="font-mono text-sm text-white/80 group-hover:text-neon transition-colors">
+
+                    <div className="font-mono text-sm text-white/80 group-hover:text-neon transition-colors break-all sm:break-normal">
                       {c.value}
                     </div>
                   </div>
                 </a>
                 <button
                   onClick={() => copy(c.value, c.key)}
-                  className="font-mono text-xs border border-border text-muted px-3 py-1 clip-corner-sm hover:border-neon/40 hover:text-neon transition-all duration-200"
+                  className="font-mono text-xs border border-border text-muted px-3 py-1 clip-corner-sm hover:border-neon/40 hover:text-neon transition-all duration-200 self-end sm:self-auto"
                 >
                   {copied === c.key ? '✓ copied' : 'copy'}
                 </button>
