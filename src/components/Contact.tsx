@@ -83,7 +83,7 @@ export default function Contact() {
             ))}
 
             {/* Quick message hint */}
-            <div className="border border-dashed border-border clip-corner p-5 text-center">
+            {/* <div className="border border-dashed border-border clip-corner p-5 text-center">
               <p className="font-mono text-xs text-muted">
                 Available for backend engineering opportunities or system design work. DM me on{' '}
                 <a href={linked_in} target="_blank" rel="noopener noreferrer" className="text-neon">
@@ -96,7 +96,7 @@ export default function Contact() {
                 <br />
                 I respond within 24 hours on business days.
               </p>
-            </div>
+            </div> */}
           </div>
         </div>
 
