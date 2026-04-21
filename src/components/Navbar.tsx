@@ -35,8 +35,7 @@ export default function Navbar() {
       for (const id of sections.reverse()) {
         const el = document.getElementById(id)
 
-        const rect = el.getBoundingClientRect()
-        if (rect.top <= 160) {
+        if (el && window.scrollY >= el.offsetTop - 120) {
           setActive(id)
           break
         }
