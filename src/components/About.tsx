@@ -101,10 +101,7 @@ export default function About() {
               </h2>
 
               <p className="text-white/60 leading-relaxed font-body mt-4">
-                Backend-focused engineer building and deploying web and mobile
-                services using Docker, NGINX, and AWS Fargate. I focus on
-                backend systems but can work with React when needed to deliver
-                complete features.
+                Backend-focused engineer building and deploying web and mobile services using Docker, NGINX, and AWS Fargate. I focus on backend systems and can build frontend interfaces to support complete application delivery.
               </p>
             </div>
 
