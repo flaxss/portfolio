@@ -6,13 +6,13 @@ const experiences = [
     company: 'eTap - Electronic Transfer & Advance Processing Inc.',
     period: '2024 — Present',
     location: 'Makati, PH',
-    stack: ['Node.js/Python/Django', 'MongoDB/Mysql', 'Docker', 'NGINX', 'ECS, Fargate'],
     achievements: [
-      'Built and maintained backend APIs for a mobile application, enabling core features and service integrations',
-      'Helped design backend architecture, organizing API and microservice structure for scalability',
-      'Implemented OAuth-based authentication across services to strengthen system security',
-      'Added user-based TOTP as an additional layer of authentication',
-      'Integrated Firebase App Check to protect backend endpoints from unauthorized requests',
+      'Built backend APIs for a mobile platform that allows kiosk customers to spend their remaining balance (“sukli”) on digital services including e-load, top-ups, and bill payments',
+      'Contributed to the end-to-end development of a fintech platform from scratch, supporting the company’s transition from traditional kiosk cash handling into a more scalable digital payment ecosystem',
+      'Helped design and organize backend architecture and microservice structure to support scalability, service isolation, and future feature expansion',
+      'Implemented OAuth-based authentication and user-level TOTP verification to strengthen account security and protect financial transactions',
+      'Integrated Firebase App Check and backend validation layers to reduce unauthorized API access and improve application integrity',
+      'Collaborated with cross-functional teams in developing solutions aligned with financial compliance constraints, particularly around digital fund handling and customer convenience',
     ],
   },
   {
@@ -20,13 +20,12 @@ const experiences = [
     company: 'LARC - Laguna Aquatech Resource Corporation',
     period: '2023 — 2024',
     location: 'Laguna, PH',
-    stack: ['PHP/Code Igniter', 'HTML', 'Javascript', 'Ajax', 'Bootstrap'],
     achievements: [
-      'Developed and maintained internal web systems for company operations as a solo developer',
-      'Built a warehouse management system to track inventory and generate operational reports',
-      'Developed a vehicle dispatch system for scheduling, tracking usage, and monitoring trip duration and distance',
-      'Implemented a reservation feature for vehicle allocation based on date and duration',
-      'Built a leave filing system with automated email notifications for HR',
+      'Served as the sole developer for multiple internal business systems used to streamline warehouse, fleet, and HR operations across the company',
+      'Developed a warehouse management system for inventory monitoring, stock usage tracking, and operational reporting, improving visibility into day-to-day warehouse activities',
+      'Built a vehicle dispatch and reservation platform for scheduling company vehicles, tracking trip duration and distance, and optimizing fleet resource allocation',
+      'Developed an HR leave management system with automated email notifications to simplify leave filing and approval processes',
+      'Maintained and enhanced internal web applications, supporting operational efficiency through custom business process automation',
     ],
   },
 ]
@@ -72,7 +71,7 @@ export default function Experience() {
               <button
                 key={i}
                 onClick={() => setActiveExp(i)}
-                className={`w-full text-left border clip-corner p-4 transition-all duration-200 group ${activeExp === i
+                className={`w-full cursor-pointer text-left border clip-corner p-4 transition-all duration-200 group ${activeExp === i
                   ? 'border-neon/50 bg-neon/5 text-neon'
                   : 'border-border text-muted hover:border-neon/20 hover:text-white'
                   }`}
@@ -113,13 +112,13 @@ export default function Experience() {
               </div>
 
               {/* Stack */}
-              <div className="flex flex-wrap gap-2 mb-6">
+              {/* <div className="flex flex-wrap gap-2 mb-6">
                 {exp.stack.map(s => (
                   <span key={s} className="font-mono text-xs bg-panel border border-border text-white/60 px-2 py-1 clip-corner-sm">
                     {s}
                   </span>
                 ))}
-              </div>
+              </div> */}
 
               {/* Achievements */}
               <div className="space-y-3">
@@ -158,7 +157,7 @@ export default function Experience() {
             ))}
           </div>
         </div> */}
-        
+
       </div>
     </section>
   )
