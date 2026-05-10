@@ -86,7 +86,7 @@ export default function Projects() {
     return () => observer.disconnect()
   }, [])
 
-  const renderCard = (p) => (
+  const renderCard = (p: any) => (
     <div
       key={p.id}
       className="group border clip-corner bg-panel hover:bg-neon/5 transition cursor-pointer border-border hover:border-neon/30 text-white/70"
