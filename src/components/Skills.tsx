@@ -1,14 +1,14 @@
 import { useEffect, useRef } from 'react'
 
-const primarySkills = [
+const engineeringSkills = [
   { name: 'Backend Development (APIs)' },
-  { name: 'Docker & Containerization' },
+  { name: 'API security (OAuth, TOTP, Cryptography)' },
   { name: 'NGINX (Reverse Proxy, SSL)' },
-  { name: 'AWS ECS / Fargate Deployment' },
-  { name: 'Authentication (OAuth, TOTP)' },
+  { name: 'Docker & Containerization' },
+  { name: 'Cloud Services (AWS ECS / Fargate)' },
 ]
 
-const secondarySkills = {
+const technicalSkills = {
   Development: ['Node.js/Express.js', 'PHP/Code Igniter', 'Python/Django', 'React', 'REST API Design'],
   Database: ['MySQL', 'MongoDB'],
   Infrastructure: ['Docker Compose', 'AWS Basics', 'Environment Configs'],
@@ -53,14 +53,14 @@ export default function Skills() {
           <div className="flex-1 h-px bg-border" />
         </div>
 
-        {/* PRIMARY SKILLS (Hero Focus) */}
+        {/* ENGINEERING SKILLS (Hero Focus) */}
         <div className="reveal mb-14">
           <h3 className="font-mono text-sm text-muted uppercase mb-6">
             <span className="text-neon/60">// </span>primary focus
           </h3>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {primarySkills.map((skill) => (
+            {engineeringSkills.map((skill) => (
               <div
                 key={skill.name}
                 className="border border-neon/20 bg-surface clip-corner p-4 hover:border-neon/40 transition"
@@ -73,10 +73,10 @@ export default function Skills() {
           </div>
         </div>
 
-        {/* SECONDARY SKILLS */}
+        {/* TECNICAL SKILLS */}
         <div className="reveal grid md:grid-cols-3 gap-6 mb-14">
 
-          {Object.entries(secondarySkills).map(([group, items]) => (
+          {Object.entries(technicalSkills).map(([group, items]) => (
             <div
               key={group}
               className="border border-border clip-corner bg-surface p-5"
