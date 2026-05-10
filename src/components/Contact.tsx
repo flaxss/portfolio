@@ -18,6 +18,7 @@ export default function Contact() {
     setCopied(key)
     setTimeout(() => setCopied(''), 2000)
   }
+  
 
   const email = "jeff_molato@yahoo.com"
   const linked_in = "https://www.linkedin.com/in/jefferson-regencia-078345288"
@@ -48,13 +49,21 @@ export default function Contact() {
               together.
             </h2>
 
-            <p className="font-body text-white/60 leading-relaxed">
-              I'm a backend-focused developer building APIs, internal tools, and application
-              backends for real-world use. I work with containerized environments and contribute
-              to deployment workflows using Docker, NGINX, and AWS Fargate within existing
-              infrastructure setups, collaborating with SRE teams on service integration at the
-              network level.
-            </p>
+            {/* Quick message hint */}
+            <div className="border border-dashed border-border clip-corner p-5 text-center">
+              <p className="font-mono text-xs text-muted">
+                Available for backend engineering opportunities or system design work. DM me on{' '}
+                <a href={linked_in} target="_blank" rel="noopener noreferrer" className="text-neon">
+                  LinkedIn
+                </a>
+                {' '}or shoot me an{' '}
+                <a href={`mailto:${email}`} className="text-neon">
+                  email
+                </a>
+                <br />
+                I respond within 24 hours on business days.
+              </p>
+            </div>
           </div>
 
           {/* Right: contact links + form */}
@@ -62,7 +71,7 @@ export default function Contact() {
             {/* Contact links */}
             {contacts.map(c => (
               <div key={c.key} className="group flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border border-border clip-corner p-4 hover:border-neon/40 hover:bg-neon/5 transition-all duration-200">
-                <a href={c.href} target="_blank" className="flex items-start sm:items-center gap-4 min-w-0">
+                <a href={c.href} target="_blank" rel="noopener noreferrer" className="flex items-start sm:items-center gap-4 min-w-0">
                   <span className="font-mono text-lg shrink-0">{c.icon}</span>
 
                   <div className="min-w-0">
@@ -82,21 +91,6 @@ export default function Contact() {
               </div>
             ))}
 
-            {/* Quick message hint */}
-            {/* <div className="border border-dashed border-border clip-corner p-5 text-center">
-              <p className="font-mono text-xs text-muted">
-                Available for backend engineering opportunities or system design work. DM me on{' '}
-                <a href={linked_in} target="_blank" rel="noopener noreferrer" className="text-neon">
-                  LinkedIn
-                </a>
-                {' '}or shoot me an{' '}
-                <a href={`mailto:${email}`} className="text-neon">
-                  email
-                </a>
-                <br />
-                I respond within 24 hours on business days.
-              </p>
-            </div> */}
           </div>
         </div>
 

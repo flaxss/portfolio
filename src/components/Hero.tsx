@@ -52,8 +52,11 @@ export default function Hero() {
 
         {/* Subtitle */}
         <p className="reveal text-white/60 text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
-          I design and build scalable backend systems for web and mobile applications —
-          from architecture to production deployment.
+          {/* I design and build scalable backend systems for web and mobile applications —
+          from architecture to production deployment. */}
+
+          Backend engineer building APIs and backend systems for web and mobile applications -
+            I like turning ideas into working, deployable services.
         </p>
 
         {/* CTA */}
