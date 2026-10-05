@@ -1,40 +1,68 @@
 import { useEffect, useRef, useState } from 'react'
 
-const experiences = [
+type Experience = {
+  role: string
+  company: string
+  period: string
+  location: string
+  achievements: string[]
+}
+
+type Education = {
+  course: string
+  university: string
+  period?: string
+}
+
+const experiences: Experience[] = [
   {
     role: 'Software Engineer',
     company: 'eTap - Electronic Transfer & Advance Processing Inc.',
-    period: '2024 — Present',
+    period: '2026 — Present',
     location: 'Makati, PH',
     achievements: [
-      'Built backend APIs for a mobile platform that allows kiosk customers to spend their remaining balance (“sukli”) on digital services including e-load, top-ups, and bill payments',
-      'Contributed to the end-to-end development of a fintech platform from scratch, supporting the company’s transition from traditional kiosk cash handling into a more scalable digital payment ecosystem',
-      'Helped design and organize backend architecture and microservice structure to support scalability, service isolation, and future feature expansion',
-      'Implemented OAuth-based authentication and user-level TOTP verification to strengthen account security and protect financial transactions',
-      'Integrated Firebase App Check and backend validation layers to reduce unauthorized API access and improve application integrity',
-      'Collaborated with cross-functional teams in developing solutions aligned with financial compliance constraints, particularly around digital fund handling and customer convenience',
+      'Own backend enhancements and optimization work that improves maintainability, deployment efficiency, and operational reliability',
+      'Design and ship backend solutions for new features and changing business requirements, from technical approach through integration and testing',
+      'Strengthen backend security in line with the OWASP Top 10, covering authentication, authorization, input validation, and common application-level risks',
+      'Run production deployments in the engineering rotation, working with SRE on configuration, service integration, and release readiness using Docker, NGINX, and AWS ECS/Fargate',
+      'Helped restructure the backend deployment by folding Celery and Celery Beat into the application service, which cut deployment touchpoints and reduced user disruption from service restarts',
+      'Mentor junior developers through code reviews, debugging sessions, and technical guidance',
+      'Investigate and resolve production issues to keep the platform stable',
     ],
   },
   {
-    role: 'Web Developer',
+    role: 'Software Engineer (Junior)',
+    company: 'eTap - Electronic Transfer & Advance Processing Inc.',
+    period: '2024 — 2026',
+    location: 'Makati, PH',
+    achievements: [
+      'Helped build the company’s first mobile platform from the ground up as part of a small backend team',
+      'Developed and maintained REST APIs that let customers use their Mysukli at eTap kiosks for e-load, top-ups, bill payments, and other digital transactions',
+      'Shaped the backend architecture and the move toward a microservice-based system, enabling service isolation and future feature expansion',
+      'Took part in the full backend migration from Sails.js/MongoDB to Django REST Framework/MySQL, covering API redevelopment, data migration, service integration, and functional validation',
+      'Implemented OAuth, user-level TOTP, and Firebase App Check for authentication and security',
+      'Worked across MongoDB and MySQL to support data requirements throughout the migration',
+    ],
+  },
+  {
+    role: 'Junior Programmer',
     company: 'LARC - Laguna Aquatech Resource Corporation',
     period: '2023 — 2024',
     location: 'Laguna, PH',
     achievements: [
-      'Served as the sole developer for multiple internal business systems used to streamline warehouse, fleet, and HR operations across the company',
-      'Developed a warehouse management system for inventory monitoring, stock usage tracking, and operational reporting, improving visibility into day-to-day warehouse activities',
-      'Built a vehicle dispatch and reservation platform for scheduling company vehicles, tracking trip duration and distance, and optimizing fleet resource allocation',
-      'Developed an HR leave management system with automated email notifications to simplify leave filing and approval processes',
-      'Maintained and enhanced internal web applications, supporting operational efficiency through custom business process automation',
+      'Sole developer for several internal business systems used by roughly 20–100 staff across warehouse, fleet, and HR',
+      'Built a warehouse management system for inventory monitoring, stock usage tracking, and reporting, replacing much of the manual daily tracking',
+      'Built a vehicle dispatch and reservation platform that schedules company vehicles and tracks trip duration and distance to improve fleet allocation',
+      'Built an HR leave management system with automated email notifications to streamline filing and approval for staff and managers',
+      'Maintained and extended existing internal web apps, automating business processes to improve day-to-day efficiency',
     ],
   },
 ]
 
-const educations = [
+const educations: Education[] = [
   {
     course: 'B.S. Information Technology',
     university: 'Cavite State University',
-    period: '',
   },
 ]
 
@@ -44,10 +72,16 @@ export default function Experience() {
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => entries.forEach(e => e.target.classList.toggle('visible', e.isIntersecting)),
+      (entries) =>
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible')
+            observer.unobserve(entry.target) // reveal once, no re-animating on scroll
+          }
+        }),
       { threshold: 0.1 }
     )
-    ref.current?.querySelectorAll('.reveal').forEach(el => observer.observe(el))
+    ref.current?.querySelectorAll('.reveal').forEach((el) => observer.observe(el))
     return () => observer.disconnect()
   }, [])
 
@@ -65,38 +99,55 @@ export default function Experience() {
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8">
-          {/* Left: company selector */}
+          {/* Left: role selector */}
           <div className="reveal space-y-2">
-            {experiences.map((e, i) => (
-              <button
-                key={i}
-                onClick={() => setActiveExp(i)}
-                className={`w-full cursor-pointer text-left border clip-corner p-4 transition-all duration-200 group ${activeExp === i
-                  ? 'border-neon/50 bg-neon/5 text-neon'
-                  : 'border-border text-muted hover:border-neon/20 hover:text-white'
-                  }`}
-              >
-                <div className={`font-mono text-xs font-semibold ${activeExp === i ? 'text-neon' : 'text-white/70'}`}>
-                  {e.company}
-                </div>
-                <div className="font-mono text-xs text-muted mt-1">{e.period}</div>
-              </button>
-            ))}
+            <div role="tablist" aria-label="Work experience" className="space-y-2">
+              {experiences.map((e, i) => {
+                const isActive = activeExp === i
+                return (
+                  <button
+                    key={`${e.company}-${e.period}`}
+                    id={`exp-tab-${i}`}
+                    role="tab"
+                    type="button"
+                    aria-selected={isActive}
+                    aria-controls="exp-panel"
+                    onClick={() => setActiveExp(i)}
+                    className={`w-full cursor-pointer text-left border clip-corner p-4 transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-neon ${
+                      isActive
+                        ? 'border-neon/50 bg-neon/5 text-neon'
+                        : 'border-border text-muted hover:border-neon/20 hover:text-white'
+                    }`}
+                  >
+                    <div className={`font-mono text-xs font-semibold ${isActive ? 'text-neon' : 'text-white/70'}`}>
+                      {e.role}
+                    </div>
+                    <div className="font-mono text-xs text-muted mt-1">{e.company.split(' - ')[0]}</div>
+                    <div className="font-mono text-xs text-muted">{e.period}</div>
+                  </button>
+                )
+              })}
+            </div>
 
             {/* Education */}
             {educations.map((e) => (
-              <div className="border border-border clip-corner p-4 mt-6">
+              <div key={`${e.course}-${e.university}`} className="border border-border clip-corner p-4 mt-6">
                 <div className="font-mono text-xs text-muted tracking-widest uppercase mb-3">education</div>
                 <div className="font-mono text-xs text-white/70 font-semibold">{e.course}</div>
                 <div className="font-mono text-xs text-muted">{e.university}</div>
-                <div className="font-mono text-xs text-muted">{e.period}</div>
+                {e.period && <div className="font-mono text-xs text-muted">{e.period}</div>}
               </div>
             ))}
           </div>
 
           {/* Right: details */}
           <div className="lg:col-span-2 reveal reveal-delay-1">
-            <div className="border border-border clip-corner bg-surface p-7">
+            <div
+              id="exp-panel"
+              role="tabpanel"
+              aria-labelledby={`exp-tab-${activeExp}`}
+              className="border border-border clip-corner bg-surface p-7"
+            >
               {/* Header */}
               <div className="mb-6">
                 <div className="flex flex-wrap items-start justify-between gap-2 mb-2">
@@ -107,57 +158,32 @@ export default function Experience() {
                 </div>
                 <div className="flex flex-wrap gap-2 font-mono text-xs text-muted">
                   <span>{exp.company}</span>
-                  <span>📍 {exp.location}</span>
+                  <span>
+                    <span aria-hidden="true">📍 </span>
+                    {exp.location}
+                  </span>
                 </div>
               </div>
 
-              {/* Stack */}
-              {/* <div className="flex flex-wrap gap-2 mb-6">
-                {exp.stack.map(s => (
-                  <span key={s} className="font-mono text-xs bg-panel border border-border text-white/60 px-2 py-1 clip-corner-sm">
-                    {s}
-                  </span>
-                ))}
-              </div> */}
-
               {/* Achievements */}
-              <div className="space-y-3">
-                {exp.achievements.map((a, i) => (
-                  <div key={i} className="flex gap-3 group">
-                    <span className="text-neon mt-0.5 flex-shrink-0 text-sm group-hover:scale-110 transition-transform">▸</span>
+              <ul className="space-y-3">
+                {exp.achievements.map((a) => (
+                  <li key={a} className="flex gap-3 group">
+                    <span
+                      aria-hidden="true"
+                      className="text-neon mt-0.5 flex-shrink-0 text-sm group-hover:scale-110 transition-transform"
+                    >
+                      ▸
+                    </span>
                     <p className="font-body text-sm text-white/65 leading-relaxed group-hover:text-white/80 transition-colors">
                       {a}
                     </p>
-                  </div>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
           </div>
         </div>
-
-        {/* Certifications row */}
-        {/* <div className="reveal mt-14">
-          <h3 className="font-mono text-xs text-muted tracking-widest uppercase mb-5">
-            <span className="text-neon/60">// </span>certifications & continuous learning
-          </h3>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {[
-              { name: 'AWS Certified Solutions Architect', org: 'Amazon Web Services', year: '2023' },
-              { name: 'Certified Kubernetes Administrator', org: 'CNCF', year: '2022' },
-              { name: 'Google Cloud Professional DE', org: 'Google Cloud', year: '2023' },
-              { name: 'MongoDB Developer Cert.', org: 'MongoDB University', year: '2021' },
-            ].map(cert => (
-              <div key={cert.name} className="border border-border clip-corner p-4 hover:border-neon/30 transition-colors group">
-                <div className="font-mono text-xs text-white/70 group-hover:text-neon transition-colors mb-1 font-semibold leading-tight">
-                  {cert.name}
-                </div>
-                <div className="font-mono text-xs text-muted">{cert.org}</div>
-                <div className="font-mono text-xs text-neon/50 mt-2">{cert.year}</div>
-              </div>
-            ))}
-          </div>
-        </div> */}
-
       </div>
     </section>
   )
