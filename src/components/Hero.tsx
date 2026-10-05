@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 
 const stats = [
   { val: '3+', label: 'years experience' },
-  { val: '6+', label: 'systems built' },
+  { val: '7+', label: 'systems built' },
   { val: 'deployment', label: 'docker • ci/cd • aws' }
 ]
 

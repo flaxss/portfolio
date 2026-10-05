@@ -11,7 +11,7 @@ const engineeringSkills = [
 const technicalSkills = {
   Development: ['Node.js/Express.js', 'PHP/Code Igniter', 'Python/Django', 'React', 'REST API Design'],
   Database: ['MySQL', 'MongoDB'],
-  Infrastructure: ['Docker Compose', 'AWS Basics', 'Environment Configs'],
+  Infrastructure: ['Docker Compose', 'AWS EC2 / ECS', 'Environment Configs'],
 }
 
 const practices = [
